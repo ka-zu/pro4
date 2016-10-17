@@ -38,11 +38,20 @@ int main()
 				push(buf[i]);//プッシュ
 				break;
 			case ']': case '}': case ')':
-				chst = buf[i];//値を保存
 				push(buf[i]);//プッシュ
-				/*閉じカギカッコの場合
-				その前は同じ種類の開き括弧*/
-				if(chst == stack[sp])
+				/*閉じ括弧の場合、その前は
+				　同じ種類の開き括弧*/
+				if(stack[sp]==']'&&stack[sp-1]=='[')
+				{
+					pop();//括弧の組を出す
+					pop();
+				}
+				else if(stack[sp]=='}'&&stack[sp-1]=='{')
+				{
+					pop();//括弧の組を出す
+					pop();
+				}
+				else if(stack[sp]==')'&&stack[sp-1]=='(')
 				{
 					pop();//括弧の組を出す
 					pop();
