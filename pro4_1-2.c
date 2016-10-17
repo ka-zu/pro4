@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #define stack_type char
 #define stack_size 100
+#define format "%c"
 #include "stack.h"
 int main()
 {
@@ -15,10 +16,9 @@ int main()
 	{
 		if(ch != ' ')
 		{
-			if(ch >= 97 && ch <= 122 && pch == ' ')
+			if(ch >= 97 && ch <= 122 && pch == ' ')//頭文字がa(97)~z(122)のとき
 			{
-				small = 1;
-				//push(ch);
+				small = 1;//小文字フラグ
 			}else if(pch == ' '){
 				small = 0;
 			}
@@ -31,7 +31,7 @@ int main()
 			}
 
 		}else{
-			while(stack_stock()>0)
+			while(stack_stock()>0)//小文字の単語がプッシュし終わったら
 			{
 				fprintf(stdout, "%c",pop() );
 			}
