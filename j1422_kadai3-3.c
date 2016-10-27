@@ -60,28 +60,6 @@ void print_list(){
   fprintf(stdout, "\n");
 }
 
-/*void overWrite_node(int k, int y){
-  int i;
-  LISTEL *p, *q;
-  if(k <= 0){
-    fprintf(stderr, "Target node is not found!");
-    return;
-  }
-  p = (LISTEL *)malloc( sizeof(LISTEL) );
-  p = root;
-  for(i=1; i<k; i++){
-    if(p == NULL){
-      fprintf(stderr, "Error : Target node is not found!");
-      return;
-    }
-    p = p->next;
-  }
-  p->data = y;
-  q = (LISTEL *)malloc( sizeof(LISTEL) );
-  p = q;
-  q = p->next;
-}*/
-
 void insert_node(int k, int y){
   int i;
   LISTEL *p, *q;
