@@ -12,7 +12,6 @@ void construct_list(){
   LISTEL *p;
   int n, y, i, k, noIndex[50];
   char buf[100];
-  root.next = &root;//ルートの次を初期化
   while(1){
     fprintf(stdout, "Input data:");
     fgets(buf, sizeof(buf), stdin);
@@ -65,6 +64,7 @@ void print_list(){
 }
 
 int main(){
+  root.next = &root;//ルートの次を初期化
   construct_list();
   print_list();
   return 0;
