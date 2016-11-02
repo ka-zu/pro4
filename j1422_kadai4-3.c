@@ -97,7 +97,7 @@ void delete_node(int k){
     return;
   }
   if(k==1){
-    root.next = p;
+    root.next = p->next;
     return;
   }
   q = (LISTEL *)malloc( sizeof(LISTEL) );
