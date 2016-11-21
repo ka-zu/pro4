@@ -45,13 +45,13 @@ void construct_list(){
 
 			p->data = y;
 
-			q=root->next;//¡‚ÌŽŸ‚Ìƒm[ƒh‚ðq‚Æ‚·‚é
+			q=root->next;//ï¿½ï¿½ï¿½ÌŽï¿½ï¿½Ìƒmï¿½[ï¿½hï¿½ï¿½qï¿½Æ‚ï¿½ï¿½ï¿½
 			//printf("%d",p->data);
-			p->next = q;//V‚½‚È’lp‚ÌŽŸ‚ðq‚É‚·‚é
-			p->prev = q->prev;//p‚Ì‘O‚Íq‚Ì‘O(‘O‚Ì’l)
+			p->next = q;//ï¿½Vï¿½ï¿½ï¿½È’lpï¿½ÌŽï¿½ï¿½ï¿½qï¿½É‚ï¿½ï¿½ï¿½
+			p->prev = q->prev;//pï¿½Ì‘Oï¿½ï¿½qï¿½Ì‘O(ï¿½Oï¿½Ì’l)
 			//printf("%d",p->data);
-			root->next = p;//‘O‚Ìƒm[ƒh‚Æ‚¢‚Ü‚Ìƒm[ƒh‚ð˜AŒ‹
-			q->prev = p;//‘O‚Ìƒm[ƒh‚Æ¡‚Ìƒm[ƒh‚ð”½‘Î‚É˜AŒ‹
+			root->next = p;//ï¿½Oï¿½Ìƒmï¿½[ï¿½hï¿½Æ‚ï¿½ï¿½Ü‚Ìƒmï¿½[ï¿½hï¿½ï¿½ï¿½Aï¿½ï¿½
+			q->prev = p;//ï¿½Oï¿½Ìƒmï¿½[ï¿½hï¿½Æï¿½ï¿½Ìƒmï¿½[ï¿½hï¿½ð”½‘Î‚É˜Aï¿½ï¿½
 
 		}
 	}
@@ -59,7 +59,7 @@ void construct_list(){
 
 void print_list() {
 	LISTEL *p, *q;
-	//ƒAƒhƒŒƒX‚ð‘ã“ü
+	//ï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	p = root->next;
 	q = root->prev;
 	if(p == root || q == root){
@@ -99,8 +99,8 @@ void insert_node(int k , int y){
 
 	q = (LISTEL *)malloc( sizeof(LISTEL) );
 	q->data = y;
-	q->next = p->next;//’Ç‰Á‚·‚éƒm[ƒh‚ÌŽŸ‚ð’Ç‰Á‘O‚Ìƒm[ƒh‚Ì‚Â‚¬‚É
-	p->next->prev = q;//’Ç‰Á‘O‚ÌŽŸ‚Ìƒm[ƒh‚Ì‘O‚ð’Ç‰Á‚·‚éƒm[ƒh‚É
+	q->next = p->next;//ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mï¿½[ï¿½hï¿½ÌŽï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ï¿½Oï¿½Ìƒmï¿½[ï¿½hï¿½Ì‚Â‚ï¿½ï¿½ï¿½
+	p->next->prev = q;//ï¿½Ç‰ï¿½ï¿½Oï¿½ÌŽï¿½ï¿½Ìƒmï¿½[ï¿½hï¿½Ì‘Oï¿½ï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mï¿½[ï¿½hï¿½ï¿½
 	p->next = q;
 	q->prev = p;
 }
@@ -115,14 +115,14 @@ void delete_node(int k){
 		return;
 	}
 	if(k==1){
-		p->next->prev = &root;//ŽŸ‚Ì‘O‚ðroot‚É‚·‚é
-		root->next = p->next;//ŽŸ‚ðŽŸ‚ÌŽŸ‚É‚·‚é
-		
+		p->next->prev = &root;//ï¿½ï¿½ï¿½Ì‘Oï¿½ï¿½rootï¿½É‚ï¿½ï¿½ï¿½
+		root->next = p->next;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŽï¿½ï¿½É‚ï¿½ï¿½ï¿½
+
 		return;
 	}
 	q = (LISTEL *)malloc( sizeof(LISTEL) );
 	q = NULL;
-	//2ŒÂˆÈã
+	//2ï¿½ÂˆÈï¿½
 	printf("%d",k);
 	for(i=0; i<k-1; i++){
 		if(p->next == &root){
@@ -133,8 +133,8 @@ void delete_node(int k){
 		p = p->next;
 	}
 	//q = p;
-	p->prev->next = p->next;//k”Ô–Ú‚Ìp‚Ì‘O‚Ìƒm[ƒh‚ÌŽŸ‚ðAk”Ô–Ú‚ÌŽŸ‚Ìƒm[ƒh‚É‚·‚é(p”Ô–Ú‚ð”ò‚Î‚·)
-	p->next->prev = p->prev;//k”Ô–Ú‚Ìp‚ÌŽŸ‚Ìƒm[ƒh‚Ì‘O‚ðAk”Ô–Ú‚Ì‘O‚Ìƒm[ƒh‚É‚·‚é(p”Ô–Ú‚ð”ò‚Î‚·)
+	p->prev->next = p->next;//kï¿½Ô–Ú‚ï¿½pï¿½Ì‘Oï¿½Ìƒmï¿½[ï¿½hï¿½ÌŽï¿½ï¿½ï¿½ï¿½Akï¿½Ô–Ú‚ÌŽï¿½ï¿½Ìƒmï¿½[ï¿½hï¿½É‚ï¿½ï¿½ï¿½(pï¿½Ô–Ú‚ï¿½ï¿½ï¿½ï¿½Î‚ï¿½)
+	p->next->prev = p->prev;//kï¿½Ô–Ú‚ï¿½pï¿½ÌŽï¿½ï¿½Ìƒmï¿½[ï¿½hï¿½Ì‘Oï¿½ï¿½ï¿½Akï¿½Ô–Ú‚Ì‘Oï¿½Ìƒmï¿½[ï¿½hï¿½É‚ï¿½ï¿½ï¿½(pï¿½Ô–Ú‚ï¿½ï¿½ï¿½ï¿½Î‚ï¿½)
 }
 
 void replace_node(int x,int y){
@@ -142,7 +142,7 @@ void replace_node(int x,int y){
 	LISTEL *p;
 	p = (LISTEL *)malloc( sizeof(LISTEL) );
 	p = root->next;
-	while(p->next != root){
+	while(p->next != root){//rootã«æˆ»ã£ã¦ãã‚‹ã¾ã§
 		if(p->data == x){
 			p->data = y;
 		}
@@ -152,7 +152,7 @@ void replace_node(int x,int y){
 
 int main() {
 	int k,y,x;
-	//root‚É’l‚ª“ü‚Á‚Ä‚È‚¢‚Ì‚Å“ü‚ê‚Ä‚ ‚°‚é
+	//rootï¿½É’lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚È‚ï¿½ï¿½Ì‚Å“ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½
 	root = (LISTEL *)malloc( sizeof(LISTEL) );
 
 	root->next = root;
