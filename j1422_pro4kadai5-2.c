@@ -137,7 +137,7 @@ void delete_node(int k){
 	}
 	//q = p;
 	p->prev->next = p->next;//k番目のpの前のノードの次を、k番目の次のノードにする(p番目を飛ばす)
-	p->next->prev = p->prev;////k番目のpの次のノードの前を、k番目の前のノードにする(p番目を飛ばす)
+	p->next->prev = p->prev;//k番目のpの次のノードの前を、k番目の前のノードにする(p番目を飛ばす)
 }
 
 int main() {
