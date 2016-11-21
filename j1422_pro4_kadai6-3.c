@@ -141,7 +141,8 @@ int delete_node(int y){//左側の最大値から求める
   if(n == NULL){
     fprintf(stderr, "Error:There is no data!");
     return -1;
-    while(n != NULL && n->data != y){
+  }
+  while(n != NULL && n->data != y){
       if(n->data > y){//今の値より子が小さければ
         p_n = n;//次の親となる
         n = n->left;//左の子に移動
@@ -158,7 +159,7 @@ int delete_node(int y){//左側の最大値から求める
       return 0;
     }
     //削除するプログラム
-    if(n->left == NULL && n->right == NULL ){//葉なら
+    if(n->left == NULL && n->right == NULL ){//どちらもNULLなら葉
       if(d == -1){
         p_n->left = NULL;
       }
@@ -166,20 +167,43 @@ int delete_node(int y){//左側の最大値から求める
         p_n->right = NULL;
       }
     }
-    else if(0){//一つの子を持つ親なら
-
+    else if(n->left == NULL || n->right == NULL){//どちらかがNULLなら一つの子を持つ親
+      //fprintf(stdout,"parent of one \n");
+      if(d == -1){//親の左から来た
+        if(n->left != NULL){//左に値がある
+          p_n->left = n->left;//親の左と一つの子を結ぶ
+        }
+        else{//右に値がある
+          p_n->left = n->right;//親の左と一つの子を結ぶ
+        }
+      }
+      else if(d == 1){//親の右から来た
+        if(n->left != NULL){
+          p_n->right = n->left;//親の右と一つの子を結ぶ
+        }
+        else{
+          p_n->right = n->right;//親の右と一つの子を結ぶ
+        }
+      }
     }
-    else if(0){//二人の子を持つ親なら
-
+    else{//どちらもNULLでなかったら二人の子を持つ親
+      //fprintf(stdout,"parent of two \n");
+      //左の気からの最大数を削除する方法
+      p_n = n;
+      n = n->left;//左に移動
+      while(n->left != NULL && n->right != NULL){//左の枝最大の値になるまで移動
+          if(n->right != NULL){//右に値があるなら
+            n = n->right;//右の子に移動
+          }
+          else{
+            n = n->left;
+          }
+      }
+      delete_node(n->data);//左の最大値（葉）を削除
+      p_n->data = n->data;//消したい節に代入
     }
 
-
-    return 1;
-  }
-
-
-
-
+  return 1;
 }
 
 int main(){
