@@ -1,3 +1,4 @@
+//双方向リスト　構築　表示　挿入
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -45,13 +46,13 @@ void construct_list(){
 
 			p->data = y;
 
-			q=root.next;//���̎��̃m�[�h��q�Ƃ���
+			q=root.next;//今の次のノードをqとする
 			//printf("%d",p->data);
-			p->next = q;//�V���Ȓlp�̎���q�ɂ���
-			p->prev = q->prev;//p�̑O��q�̑O(�O�̒l)
+			p->next = q;//新たな値pの次をqにする
+			p->prev = q->prev;//pの前はqの前(前の値)
 			//printf("%d",p->data);
-			root.next = p;//�O�̃m�[�h�Ƃ��܂̃m�[�h��A��
-			q->prev = p;//�O�̃m�[�h�ƍ��̃m�[�h�𔽑΂ɘA��
+			root.next = p;//前のノードといまのノードを連結
+			q->prev = p;//前のノードと今のノードを反対に連結
 
 		}
 	}
@@ -59,7 +60,7 @@ void construct_list(){
 
 void print_list() {
 	LISTEL *p, *q;
-	//�A�h���X����
+	//アドレスを代入
 	p = root.next;
 	q = root.prev;
 	if(p == &root || q == &root){
@@ -99,8 +100,8 @@ void insert_node(int k , int y){
 
 	q = (LISTEL *)malloc( sizeof(LISTEL) );
 	q->data = y;
-	q->next = p->next;//�ǉ�����m�[�h�̎���ǉ��O�̃m�[�h�̂���
-	p->next->prev = q;//�ǉ��O�̎��̃m�[�h�̑O��ǉ�����m�[�h��
+	q->next = p->next;//追加するノードの次を追加前のノードのつぎに
+	p->next->prev = q;//追加前の次のノードの前を追加するノードに
 	p->next = q;
 	q->prev = p;
 }
@@ -119,12 +120,12 @@ void delete_node(int k){
 	if(k==1){
 		p->next->prev = &root;
 		root.next = p->next;
-		
+
 		return;
 	}
 	q = (LISTEL *)malloc( sizeof(LISTEL) );
 	q = NULL;
-	//2�ȏ�
+	//2個以上
 	printf("%d",k);
 	for(i=0; i<k-1; i++){
 		if(p->next == &root){
@@ -135,8 +136,8 @@ void delete_node(int k){
 		p = p->next;
 	}
 	//q = p;
-	p->prev->next = p->next;//k�Ԗڂ�p�̑O�̃m�[�h�̎����Ak�Ԗڂ̎��̃m�[�h�ɂ���(p�Ԗڂ��΂�)
-	p->next->prev = p->prev;//k�Ԗڂ�p�̎��̃m�[�h�̑O���Ak�Ԗڂ̑O�̃m�[�h�ɂ���(p�Ԗڂ��΂�)
+	p->prev->next = p->next;//k番目のpの前のノードの次を、k番目の次のノードにする(p番目を飛ばす)
+	p->next->prev = p->prev;////k番目のpの次のノードの前を、k番目の前のノードにする(p番目を飛ばす)
 }
 
 int main() {

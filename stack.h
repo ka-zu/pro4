@@ -1,56 +1,55 @@
-//j1422 “yˆä stack.h
+//j1422 ï¿½yï¿½ï¿½ stack.h
 
 stack_type stack[stack_size];
 int sp;
 
-//ƒXƒ^ƒbƒNƒGƒfƒBƒ^‚Ì‰Šú‰»
+//ã‚¹ã‚¿ãƒƒã‚¯ã®åˆæœŸåŒ–
 void init_stack()
 {
 	sp = -1;
 }
 
-//ƒXƒ^ƒbƒN‚Éƒf[ƒ^‚ğŠi”[
+//ã‚¹ã‚¿ãƒƒã‚¯ã«ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´
 void push(stack_type d)
 {
- 	if( sp < stack_size-1)
+ 	if( sp < stack_size-1)//ã‚¹ã‚¿ãƒƒã‚¯ã‚µã‚¤ã‚ºã‚ˆã‚Šå°‘ãªã‹ã£ãŸã‚‰
 	{
-		stack[++sp] = d;
+		stack[++sp] = d;//+1ã—ã¦ã‹ã‚‰è¿½åŠ 
 	}
-	else
+	else//ç­‰ã—ã„ã‹å¤šã‹ã£ãŸã‚‰
 	{
-		fprintf(stderr, "Error : stack full \n");
+		fprintf(stderr, "Error : stack full \n");//ã‚¹ã‚¿ãƒƒã‚¯ãŒã„ã£ã±ã„
 		exit(1);
 	}
 }
 
-//ƒXƒ^ƒbƒN“à‚Ìƒf[ƒ^”‚ğ•Ô‚·
+//ã‚¹ã‚¿ãƒƒã‚¯å†…ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿”ã™
 int stack_stock()
 {
-	//©•ª‚Åì‚é
+	//spã®åˆæœŸå€¤ã¯-1ãªã®ã§+1ã™ã‚‹
 	return sp+1;
 }
 
-//ƒXƒ^ƒbƒN‚Ìƒf[ƒ^‚ğæ‚èo‚·
+//ã‚¹ã‚¿ãƒƒã‚¯å†…ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–ã‚Šå‡ºã™
 stack_type pop()
 {
-	if( sp >= 0)
+	if( sp >= 0)//ã‚¹ã‚¿ãƒƒã‚¯å†…ã«å€¤ãŒã‚ã£ãŸã‚‰
 	{
-		return stack[sp--];
+		return stack[sp--];//å–ã‚Šå‡ºã—ã¦ã‹ã‚‰-1ã™ã‚‹
 	}
 	else
 	{
-		fprintf(stderr, "Error : stack empty \n");
+		fprintf(stderr, "Error : stack empty \n");//ã‚¹ã‚¿ãƒƒã‚¯ãŒç©º
 		exit(1);
 	}
 }
 
-//ƒXƒ^ƒbƒN“à‚Ìƒf[ƒ^‚ğo—Í
+//ã‚¹ã‚¿ãƒƒã‚¯å†…ã®å€¤ã‚’å‡ºåŠ›
 void print_stack()
 {
-	//‚±‚±‚Í©•ª‚Åì‚é
 	int i;
 	printf("stack data : ");
-	for(i=0;i<=sp;i++)
+	for(i=0;i<=sp;i++)//spã®å€¤ã®ã¶ã‚“ç¹°ã‚Šè¿”ã™
 	{
 		printf("%d ",stack[i]);
 	}

@@ -1,3 +1,4 @@
+//双方向リスト　構築　表示
 #include <stdio.h>
 #include <stdlib.h>
 

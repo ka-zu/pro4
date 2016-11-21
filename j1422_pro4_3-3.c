@@ -59,30 +59,30 @@ void print_list(){
   }
   fprintf(stdout, "\n");
 }
-
+//新しいノードをk番目に挿入する
 void insert_node(int k, int y){
   int i;
   LISTEL *p, *q;
-  if(k <= 0){
+  if(k <= 0){//0以下番目が入力されたら
     fprintf(stderr, "Target node is not found!");
     return;
   }
   p = (LISTEL *)malloc( sizeof(LISTEL) );
   p = root;
-  for(i=1; i<k; i++){
-    if(p == NULL){
+  for(i=1; i<k; i++){//k番目まで移動
+    if(p == NULL){//途中でNULLなら
       fprintf(stderr, "Error : Target node is not found!");
       return;
     }
-    p = p->next;
+    p = p->next;//次へ移動
   }
 
   q = (LISTEL *)malloc( sizeof(LISTEL) );
-  q->data = y;
-  q->next = p->next;
-  p->next = q;
+  q->data = y;//qにデータを入れる
+  q->next = p->next;//qの次をpの次に
+  p->next = q;//pの次をqに
 }
-
+//k番目のノードを削除
 void delete_node(int k){
   int i;
   LISTEL *p, *q;
@@ -92,37 +92,35 @@ void delete_node(int k){
     fprintf(stderr, "Error : Target node is not found!\n");
     return;
   }
-  if(k==1){
+  if(k==1){//一つ目を削除するなら
     root = p->next;
     return;
   }
   q = (LISTEL *)malloc( sizeof(LISTEL) );
   q = NULL;
-  //2�ȏ�
-  
-  for(i=0; i<k-2; i++){
-    if(p == NULL){
+  //2番目以降
+  for(i=0; i<k-2; i++){//(i=2; i<k; i++)でも可
+    if(p == NULL){//途中でNULL
       fprintf(stderr, "Error : Target node is not found!\n");
       return;
     }
-	
-    p = p->next;
+    p = p->next;//pを次に移動
   }
-  q = p;
+  q = p;//
   p = p->next;
   q->next = p->next;
 }
-
+//xの値を持つノードをyに置き換え
 void replace_node(int x,int y){
 	int i;
 	LISTEL *p;
 	p = (LISTEL *)malloc( sizeof(LISTEL) );
 	p = root;
-	while(p != NULL){
-		if(p->data == x){
-			p->data = y;
+	while(p != NULL){//pが最後に行くまで
+		if(p->data == x){//xの値を持つなら
+			p->data = y;//yに置き換え
 		}
-		p = p->next;
+		p = p->next;//次に移動
 	}
 
 }

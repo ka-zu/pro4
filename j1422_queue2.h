@@ -29,7 +29,7 @@ void enqueue(Q_type d)
 		printf("Queue is full \n");
 		exit(1);
 	}
-	
+
 	r = (r+1)%(Q_size-1);
 	Q[r]=d;
 }

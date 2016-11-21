@@ -1,3 +1,4 @@
+//リングバッファを用いたキュー
 #include <stdio.h>
 #include <stdlib.h>
 #define Q_size 11
@@ -37,7 +38,7 @@ int main()
   {
     fprintf(stderr, "%c ",dequeue() );
   }
-  
+
   fprintf(stdout, "\nPlease enter next text(MAX num:%d)",Q_size-stock_Q()-1 );
   c = getchar();
   while ((c=getchar()) != '\n') {
