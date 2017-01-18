@@ -1,4 +1,4 @@
-//奇数ソート　基数：２　降順
+//基数ソート　基数：２　降順
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX 1000

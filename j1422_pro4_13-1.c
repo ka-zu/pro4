@@ -12,17 +12,17 @@ unsigned bits(unsigned x, int k, int j){
 void radix_sort(int n){
   int pass, order[2], i, j, b[MAX];
   for(pass = 0; pass < 32; pass++){
-    for(j = 0; j < 2; j++){
+    for(j = 0; j < 2; j++){//データ数格納配列の初期化
       order[j] = 0;
     }
-    for(i = 1; i <= n; i++){
+    for(i = 1; i <= n; i++){//カウント
       order[bits(d[i], pass, 1)]++;
     }
-    order[1] = order[0] + order[1];
+    order[1] = order[0] + order[1];//１のデータを格納する最後尾を計算
     for(i = n; i >= 1; i--){
       b[order[bits(d[i], pass, 1)]--] = d[i];
     }
-    for(i = 1; i <= n; i++){
+    for(i = 1; i <= n; i++){//振り分けた配列のコピー
       d[i] = b[i];
     }
   }
